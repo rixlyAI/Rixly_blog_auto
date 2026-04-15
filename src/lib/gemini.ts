@@ -291,14 +291,14 @@ export async function generateBlog(
        - **Value Ratio**: Make it 90% high-value educational content and 10% subtle promotion of Rixly.
        - **Comparison**: Include comparison sections if relevant to the topic.
        - **FAQ Section**: Include a "Frequently Asked Questions" section at the end for featured snippets. Format each question in **bold**.
-       - **Final One-Liner**: End the entire post with a single, unique, and impactful one-liner promoting Rixly with a link. This MUST be different for every blog and highly relevant to the topic discussed. DO NOT mention "free" or "free trial" as Rixly is a paid service. Example: "Supercharge your sales intelligence with <a href=\"https://userixly.com\" style=\"color: #000000; text-decoration: underline; font-weight: bold;\">Rixly</a> today."
+       - **Final One-Liner**: End the entire post with a single, unique, and impactful one-liner promoting Rixly with a link. This MUST be different for every blog and highly relevant to the topic discussed. DO NOT mention "free" or "free trial" as Rixly is a paid service. Example: "Supercharge your sales intelligence with <a href=\"https://userixly.com\" style=\"color: inherit; text-decoration: underline; font-weight: bold;\">Rixly</a> today."
     
     2. **Conversion & SEO Optimization**:
        - **CTAs**: Add 2–3 soft, non-pushy CTAs positioning Userixly as the natural solution.
        - **Keywords**: Naturally include relevant keywords without stuffing.
        - **Title**: Create a highly clickable SEO title (under 60 characters).
        - **Meta Description**: Create a compelling meta description (150–160 characters).
-       - **Rixly Linking**: Mention "Rixly" naturally. Limit stylized HTML links to a MAXIMUM of 3. Format: <a href="https://userixly.com" style="color: #000000; text-decoration: underline; font-weight: bold;">Rixly</a>.
+       - **Rixly Linking**: Mention "Rixly" naturally. Limit stylized HTML links to a MAXIMUM of 3. Format: <a href="https://userixly.com" style="color: inherit; text-decoration: underline; font-weight: bold;">Rixly</a>.
        - **No Dashes**: DO NOT use any dashes (-) in the blog content (except in the slug or within bulleted lists).
     
     3. **Categorization**:
@@ -308,7 +308,7 @@ export async function generateBlog(
        - **Internal Linking**: Share exactly 10 old blog links cleverly throughout the article to show credibility and create backlinks.
        - **Categorized Links**: Use relevant links from this list: ${categorizedLinks.length > 0 ? JSON.stringify(categorizedLinks.slice(0, 50)) : "None provided."}
        - **Old/Internal Links**: ${oldLinks.length > 0 ? oldLinks.join(", ") : "None provided."}
-       - **Styling**: Use descriptive anchor tags: <a href="URL" style="color: #000000; text-decoration: underline; font-weight: bold;">Descriptive Text</a>.
+       - **Styling**: Use descriptive anchor tags: <a href="URL" style="color: inherit; text-decoration: underline; font-weight: bold;">Descriptive Text</a>.
     
     5. **Visuals & Data**:
        - **Embedded Graph**: Include a highly stylized "bento-box" style HTML/CSS data visualization in the middle of the article. Use gradients, soft shadows, and rounded corners.
@@ -459,7 +459,7 @@ function processBlogContent(blog: any): BlogContent {
     chartConfig: blog.chartConfig || { type: "bar", xAxisKey: "name", dataKey: "value", title: "Data Visualization" }
   };
 
-  const rixlyLink = '<a href="https://userixly.com" style="color: #000000; text-decoration: underline; font-weight: bold;">Rixly</a>';
+  const rixlyLink = '<a href="https://userixly.com" style="color: inherit; text-decoration: underline; font-weight: bold;">Rixly</a>';
   
   let content = normalized.content;
   
@@ -489,7 +489,7 @@ function processBlogContent(blog: any): BlogContent {
   });
 
   // Ensure a final Rixly CTA exists at the end of the blog content
-  const fallbackCTA = `Discover how <a href="https://userixly.com" style="color: #000000; text-decoration: underline; font-weight: bold;">Rixly</a> can transform your business today.`;
+  const fallbackCTA = `Discover how <a href="https://userixly.com" style="color: inherit; text-decoration: underline; font-weight: bold;">Rixly</a> can transform your business today.`;
   let finalContent = processedContent;
   if (!processedContent.includes('https://userixly.com') || !processedContent.trim().toLowerCase().includes('rixly</a>')) {
     finalContent = processedContent.trim() + "\n\n" + fallbackCTA;
