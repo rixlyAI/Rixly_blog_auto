@@ -1,0 +1,52 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: blogs
+// Document ID: auto-generated
+// Fields:
+//   - title: string (required)
+//   - slug: string (required)
+//   - content: string (required)
+//   - faq: array (optional)
+//   - chartData: array (optional)
+//   - chartConfig: object (optional)
+//   - image: string (optional) - Base64
+//   - createdAt: timestamp (required)
+//   - userId: string (required)
+//
+// ===============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidBlog(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() < 500 &&
+             data.slug is string && data.slug.size() > 0 &&
+             data.content is string && data.content.size() > 0 &&
+             data.userId == request.auth.uid;
+    }
+
+    match /blogs/{blogId} {
+      allow read, write: if true;
+    }
+
+    match /queue/{topicId} {
+      allow read, write: if true;
+    }
+
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+  }
+}
