@@ -756,7 +756,7 @@ export default function BlogDashboard({ onLogout }: { onLogout?: () => void }) {
               <Sparkles className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="text-2xl font-display font-bold tracking-tighter text-slate-900 uppercase">Rixly Automator</h1>
+              <h1 className="text-2xl font-display font-bold tracking-tighter text-slate-900 uppercase">Rixly Blog Automator</h1>
               <p className="text-slate-500 text-[10px] font-mono tracking-widest uppercase">Full-scale blog automation.</p>
             </div>
           </div>
