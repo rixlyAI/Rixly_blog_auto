@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "Blog": {
+      "title": "Blog",
+      "description": "A generated blog post",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "content": { "type": "string" },
+        "faq": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": { "type": "string" },
+              "answer": { "type": "string" }
+            }
+          }
+        },
+        "chartData": { "type": "array" },
+        "chartConfig": { "type": "object" },
+        "image": { "type": "string", "description": "Base64 encoded image" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["title", "slug", "content", "createdAt", "userId"]
+    },
+    "QueueTopic": {
+      "title": "QueueTopic",
+      "description": "A topic waiting to be processed",
+      "type": "object",
+      "properties": {
+        "topic": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "completed"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["topic", "status", "createdAt"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Automation settings",
+      "type": "object",
+      "properties": {
+        "blogsPerDay": { "type": "number" },
+        "cronSchedule": { "type": "string" },
+        "isEnabled": { "type": "boolean" },
+        "lastRun": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/blogs/{blogId}": {
+      "schema": "Blog",
+      "description": "Collection of generated blogs"
+    },
+    "/queue/{topicId}": {
+      "schema": "QueueTopic",
+      "description": "Topic queue"
+    },
+    "/settings/{settingId}": {
+      "schema": "Settings",
+      "description": "App settings"
+    }
+  }
+}
