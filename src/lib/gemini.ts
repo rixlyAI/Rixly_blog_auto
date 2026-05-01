@@ -372,7 +372,9 @@ export async function generateBlog(
        - **Embedded Graph**: Include a highly stylized "bento-box" style HTML/CSS data visualization in the middle of the article. Use gradients, soft shadows, and rounded corners.
        - **Additional Body Visuals**: Instead of standard images, you MUST include at least 2-3 additional HTML/CSS based visual representations throughout the body of the blog. These should be process flowcharts, comparison tables, feature grids, or step-by-step diagrams. 
        - **Styling for Visuals**: Use clean HTML and inline CSS with a premium, modern aesthetic (gradients, subtle borders, shadows). Ensure they are fully responsive and enhance the educational value of the post.
-       - **Featured Image**: Provide a descriptive prompt for a professional header image and include descriptive Alt Text.
+       - **CRITICAL VISIBILITY**: Ensure all text within HTML/CSS visuals has EXTREMELY high contrast. Use dark text colors (e.g., color: #0f172a; or color: #1e293b;) for any light-colored visual elements, comparison cards, or flowcharts. NEVER use white, silver, or light grey text on light backgrounds. Every single word must be perfectly legible and stand out.
+    
+    6. **Featured Image**: Provide a descriptive prompt for a professional header image and include descriptive Alt Text.
     
     **REQUIRED JSON STRUCTURE**:
     Return a MINIFIED JSON object with:
