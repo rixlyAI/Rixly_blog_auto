@@ -34,6 +34,12 @@ async function callWithRetry<T>(
   let lastError: any;
   let keys = [...apiKeys];
   
+  // Include the platform's default key if available
+  const envKey = process.env.GEMINI_API_KEY;
+  if (envKey && !keys.includes(envKey)) {
+    keys.push(envKey);
+  }
+  
   if (preferredKey) {
     // Prioritize the preferred key by moving it to the front
     keys = [preferredKey, ...keys.filter(k => k !== preferredKey)];
@@ -531,8 +537,9 @@ export async function generateImage(prompt: string, apiKeys: string[] = [], pref
   return callWithRetry(apiKeys, async (ai) => {
     // According to gemini-api skill, these are the current image generation models
     const modelsToTry = [
-      'gemini-2.5-flash-image',
-      'gemini-3.1-flash-image-preview'
+      'gemini-2.5-flash-image', // Preferred: General generation
+      'gemini-3.1-flash-image-preview', // High quality backup
+      'imagen-4.0-generate-001' // Imagen fallback if available
     ];
     
     let lastImageError: any;
@@ -546,6 +553,22 @@ export async function generateImage(prompt: string, apiKeys: string[] = [], pref
 
       for (const modelName of modelsToTry) {
         try {
+          // imagen-4.0 uses a different method
+          if (modelName.startsWith('imagen')) {
+             const response = await ai.models.generateImages({
+                model: modelName,
+                prompt: `A professional, high-quality blog header image for: "${prompt}". Style: Modern, clean, wide-angle, professional photography. Direct focus on the theme. No text in the image.`,
+                config: {
+                  numberOfImages: 1,
+                  aspectRatio: "16:9"
+                }
+             });
+             if (response.generatedImages?.[0]?.image?.imageBytes) {
+               return `data:image/png;base64,${response.generatedImages[0].image.imageBytes}`;
+             }
+             throw new Error("Imagen response did not contain image data");
+          }
+
           const response = await ai.models.generateContent({
             model: modelName,
             contents: {
