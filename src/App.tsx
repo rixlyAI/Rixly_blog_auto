@@ -53,7 +53,7 @@ export default function App() {
             </div>
             <div>
               <h1 className="text-3xl font-display font-bold tracking-tighter text-black uppercase leading-none">Rixly</h1>
-              <p className="text-[10px] font-mono tracking-[0.3em] text-slate-400 mt-1 uppercase text-center md:text-left">Automator</p>
+              <p className="text-[10px] font-mono tracking-[0.3em] text-slate-400 mt-1 uppercase text-center md:text-left">Blog Automator</p>
             </div>
           </div>
           
