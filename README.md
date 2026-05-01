@@ -1,20 +1,9 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Rixly Blog Automator
 
-# Run and deploy your AI Studio app
+Developed by **Mevin**.
 
-This contains everything you need to run your app locally.
+## Overview
+Rixly Blog Automator is a professional tool for automating content generation and publishing to Sanity CMS. It uses advanced AI models (Gemini) to generate SEO-optimized articles, custom data visualizations, and high-quality headers.
 
-View your app in AI Studio: https://ai.studio/apps/d7a8635d-8798-46b6-931d-64d3e1ae5885
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Configuration
+See `.env.example` for required environment variables.
