@@ -137,3 +137,18 @@
     @apply font-display tracking-tight uppercase;
   }
 }
+
+/* Safety net for AI-generated HTML visuals with poor contrast */
+.prose [style*="background"] {
+  color: #1e293b; /* Default to dark text for anything with a custom background */
+}
+
+.prose [style*="background-color"] {
+  color: #1e293b;
+}
+
+.prose [style*="color"] {
+  /* If AI explicitly sets a very light color, this won't override it unless we use !important,
+     but we hope the prompt fix handles the explicit colors correctly.
+     The rules above handle cases where AI sets a background but forgets a contrasting color. */
+}
